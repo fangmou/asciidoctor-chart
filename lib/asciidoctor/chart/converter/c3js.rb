@@ -63,6 +63,7 @@ module Asciidoctor
           axis_x_label = get_axis_x_label node
           axis_y_label = get_axis_y_label node
           data_names = get_data_names node
+          regions = get_regions node
           <<~HTML
             <script>
               c3.generate({
@@ -82,7 +83,8 @@ module Asciidoctor
                   y: {
                     label: '#{axis_y_label}'
                   }
-                }
+                },
+                regions: #{regions.to_s}
               })
             </script>
           HTML
@@ -94,6 +96,7 @@ module Asciidoctor
           axis_x_label = get_axis_x_label node
           axis_y_label = get_axis_y_label node
           data_names = get_data_names node
+          regions = get_regions node
           <<~HTML
             <script>
               c3.generate({
@@ -112,7 +115,8 @@ module Asciidoctor
                   y: {
                     label: '#{axis_y_label}'
                   }
-                }
+                },
+                regions: #{regions.to_s}
               })
             </script>
           HTML
@@ -124,6 +128,7 @@ module Asciidoctor
           axis_x_label = get_axis_x_label node
           axis_y_label = get_axis_y_label node
           data_names = get_data_names node
+          regions = get_regions node
           <<~HTML
             <script>
               c3.generate({
@@ -143,7 +148,8 @@ module Asciidoctor
                   y: {
                     label: '#{axis_y_label}'
                   }
-                }
+                },
+                regions: #{regions.to_s}
               })
             </script>
           HTML
@@ -155,6 +161,7 @@ module Asciidoctor
           axis_x_label = get_axis_x_label node
           axis_y_label = get_axis_y_label node
           data_names = get_data_names node
+          regions = get_regions node
           <<~HTML
             <script>
               c3.generate({
@@ -174,7 +181,8 @@ module Asciidoctor
                   y: {
                     label: '#{axis_y_label}'
                   }
-                }
+                },
+                regions: #{regions.to_s}
               })
             </script>
           HTML
@@ -224,6 +232,10 @@ module Asciidoctor
 
         def get_data_names node
           node.attr?('data-names') ? CGI.unescapeHTML(node.attr('data-names')) : '{}'
+        end
+
+        def get_regions node
+          node.attr?('regions') ? CGI.unescapeHTML(node.attr('regions')) : '[{}]'
         end
       end
     end

@@ -6,7 +6,7 @@ module Asciidoctor
       use_dsl
       named :chart
       on_context :literal
-      name_positional_attributes 'type', 'width', 'height', 'axis-x-label', 'axis-y-label', 'data-names'
+      name_positional_attributes 'type', 'width', 'height', 'axis-x-label', 'axis-y-label', 'data-names', 'regions'
       parse_content_as :raw
 
       def process parent, reader, attrs
